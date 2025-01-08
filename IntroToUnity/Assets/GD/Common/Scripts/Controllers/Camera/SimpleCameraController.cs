@@ -11,8 +11,8 @@ namespace UnityTemplateProjects
     /// <summary>
     /// Controller for a simple camera that can be moved and rotated using keyboard, mouse and gamepad input.
     /// </summary>
-    public class SimpleCameraController : MonoBehaviour
-    {
+    public class SimpleCameraController : MonoBehaviour { 
+    
         private class CameraState
         {
             public float yaw;
