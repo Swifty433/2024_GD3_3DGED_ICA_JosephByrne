@@ -552,6 +552,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4560090671194708696, guid: 0edb66d72a2b0ce48be0f3c4fcfcfe0d,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 999999
+      objectReference: {fileID: 0}
     - target: {fileID: 6569666722452111239, guid: 0edb66d72a2b0ce48be0f3c4fcfcfe0d,
         type: 3}
       propertyPath: clickEffect
