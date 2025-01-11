@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     //Animation states
     const string IDLE = "Idle";
     const string WALK = "Walk";
+    const string RUN = "run";
     const string ITEMPICKUP = "itemPickUp";
 
     //input system for player action
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem clickEffect;
     //defines layers that can be clicked
     [SerializeField] LayerMask clickableLayers;
+    [SerializeField] float walkSpeed = 3f;
+    [SerializeField] float runSpeed = 6f;
 
     //speed that player rotates
     float lookRotationSpeed = 8f;
@@ -47,6 +50,8 @@ public class PlayerController : MonoBehaviour
     void AssignInputs()
     {
         input.Main.Move.performed += ctx => ClickToMove();
+        input.Main.Run.performed += ctx => StartRunning();
+        input.Main.Run.canceled += ctx => StopRunning();
     }
 
     //handles the players movement when clicking on ground layer
@@ -62,7 +67,9 @@ public class PlayerController : MonoBehaviour
             //display a click effect at clicked point
             if (clickEffect != null)
             {
-                Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+                ParticleSystem effect = Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+
+                Destroy(effect.gameObject, effect.main.duration);
             }
         }
     }
@@ -76,6 +83,18 @@ public class PlayerController : MonoBehaviour
     {
         input.Disable();
     }
+
+    void StartRunning()
+    {
+        agent.speed = runSpeed;
+        animator.Play(RUN);
+    }
+
+    void StopRunning()
+    {
+        agent.speed = walkSpeed;
+        animator.Play(WALK);
+    }    
 
     void Update()
     {
@@ -124,6 +143,10 @@ public class PlayerController : MonoBehaviour
         if (agent.velocity == Vector3.zero)
         {
             animator.Play(IDLE);
+        }
+        else if(agent.speed == runSpeed)
+        {
+            animator.Play(RUN);
         }
         else
         {
