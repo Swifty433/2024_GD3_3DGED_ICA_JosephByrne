@@ -16,6 +16,10 @@ namespace GD.Items
         [Tooltip("The player's inventory collection (e.g. a saddlebag")]
         private InventoryCollection inventoryCollection;
 
+        [SerializeField]
+        [Tooltip("Refrence to the UI manager")]
+        private UIManager uiManager;
+
         private void Awake()
         {
             //check if the inventory collection has been added
@@ -28,14 +32,12 @@ namespace GD.Items
         /// </summary>
         /// <param name="data"></param>
 
-        //public void OnItemPickup(ItemData item)
-        //{
-        //    OnInventoryAdd(item);
-        //}
+        
 
-        public void OnInventoryAdd(ItemData data)
+        public void OnInventoryAdd(ItemData item)
         {
-            inventoryCollection.Add(data);
+            inventoryCollection.Add(item);
+            uiManager?.DisplayItemFact(item.ItemFact);
         }
     }
 }

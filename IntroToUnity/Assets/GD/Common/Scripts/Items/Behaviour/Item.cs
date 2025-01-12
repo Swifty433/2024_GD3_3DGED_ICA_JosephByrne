@@ -37,7 +37,7 @@ namespace GD.Items
         /// <param name="other">Reference to collider object triggering response</param>
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("PPPPPPPPPPP");
+            Debug.Log("Player collided with item");
             if (targetLayer.OnLayer(other.gameObject))
             {
                 //set the audio position to the transform position

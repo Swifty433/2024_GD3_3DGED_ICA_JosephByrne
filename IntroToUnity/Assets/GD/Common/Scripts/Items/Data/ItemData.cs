@@ -35,22 +35,32 @@ namespace GD.Items
         [SerializeField]
         [Tooltip("The audio clip that represents this item")]
         private AudioClip audioClip;
+        //private string itemFact;
 
         [FoldoutGroup("UI & Sound")]
         [SerializeField]
         [Tooltip("The position of the audio source that plays the audio clip")]
         private Vector3 audioPosition;
 
+        [FoldoutGroup("UI & Sound")]
+        [SerializeField]
+        [Tooltip("The fact or message to display when this item is picked up.")]
+        private string itemFact;
+
+
         #endregion Fields
 
         #region Properties
 
+        public string ItemFact => itemFact;
         public ItemCategoryType ItemCategory { get => itemCategory; set => itemCategory = value; }
         public ItemType ItemType { get => itemType; set => itemType = value; }
 
         public Sprite UiIcon { get => uiIcon; set => uiIcon = value; }
         public AudioClip AudioClip { get => audioClip; set => audioClip = value; }
         public Vector3 AudioPosition { get => audioPosition; set => audioPosition = value; }
+
+        //public string ItemFact { get => itemFact; set => itemFact = value; }
 
         #endregion Properties
     }

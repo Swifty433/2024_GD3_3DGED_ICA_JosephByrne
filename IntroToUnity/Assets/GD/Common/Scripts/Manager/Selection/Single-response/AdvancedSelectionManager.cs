@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace GD.Selection
@@ -16,6 +17,10 @@ namespace GD.Selection
         [SerializeField]
         private ISelectionResponse response;
 
+        [SerializeField]
+        [Tooltip("The UI Text element to display the name of hovered object.")]
+        private TextMeshProUGUI hoverText;
+
         private Transform currentSelection;
 
         // Awake is called when the script instance is being loaded
@@ -29,13 +34,19 @@ namespace GD.Selection
 
             //get a reponse
             response = GetComponent<ISelectionResponse>();
+
+            if(hoverText != null)
+                hoverText.text = string.Empty;
         }
 
         private void Update()
         {
             //set de-selected
             if (currentSelection != null)
+            {
                 response.OnDeselect(currentSelection);
+                ClearHoverText();
+            }
 
             //create/get ray
             selector.Check(rayProvider.CreateRay());
@@ -45,7 +56,22 @@ namespace GD.Selection
 
             //set selected
             if (currentSelection != null)
+            {
                 response.OnSelect(currentSelection);
+                UpdateHoverText(currentSelection);
+            }
+        }
+
+        private void UpdateHoverText(Transform selection)
+        {
+            if (hoverText != null)
+                hoverText.text = selection.name;
+        }
+
+        private void ClearHoverText()
+        {
+            if(hoverText != null)
+                hoverText.text = string.Empty;
         }
     }
 }
