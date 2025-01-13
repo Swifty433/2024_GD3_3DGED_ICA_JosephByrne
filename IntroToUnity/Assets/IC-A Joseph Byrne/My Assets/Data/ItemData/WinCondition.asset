@@ -17,11 +17,20 @@ MonoBehaviour:
   evaluateStrategy: 1
   priorityLevel: 5
   OnConditionMet: {fileID: 0}
-  isMet: 0
-  timeMet: -1
+  isMet: 1
+  timeMet: 8.499997
   spawnArea:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   resourceInventory: {fileID: 11400000, guid: 1ba305d238bdbc049a7c0b2d65ac8605, type: 2}
   items:
   - {fileID: 11400000, guid: b642fd65a2ad2a8459a506f3bf9080ba, type: 2}
+  - {fileID: 11400000, guid: 0fe230d5e1b1b9d4bafac1952783f44d, type: 2}
+  - {fileID: 11400000, guid: e98d6fbf09abe17409f091b05d3d84f5, type: 2}
+  - {fileID: 11400000, guid: 6bc102fa5e0a3384b9c46be30327d3f1, type: 2}
+  - {fileID: 11400000, guid: e480397af90c3de48bbba595e9bf08c6, type: 2}
+  - {fileID: 11400000, guid: 963eb2d89dcdcda4e8f693b744fd6ba6, type: 2}
+  - {fileID: 11400000, guid: 90c2657787d6d6d45a5705eff5b65247, type: 2}
+  - {fileID: 11400000, guid: ee30aa11154c99a41ad3b4879d430f2d, type: 2}
+  - {fileID: 11400000, guid: 64136014f1da97540851741da249ecba, type: 2}
+  - {fileID: 11400000, guid: fa4516bf9755b474abe6870f990656c6, type: 2}
