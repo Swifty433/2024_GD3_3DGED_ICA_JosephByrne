@@ -60,6 +60,8 @@ namespace GD.Items
         //add a new inventory to the collection
         public void Add(ItemData itemData)
         {
+            AudioManager.instance.PlaySFX("Collect");
+
             //if I never collected a Consumable
             if (!contents.ContainsKey(itemData.ItemCategory))
                 throw new NullReferenceException("No inventory for this item category");
@@ -81,6 +83,21 @@ namespace GD.Items
             contents.Clear();
             onCollectionEmpty?.Raise();
             return contents.Count == 0;
+        }
+
+        public List<Item> items;
+
+        public bool Contains(Item item)
+        {
+            return items.Contains(item);
+        }
+
+        public void ClearAllInventories()
+        {
+            foreach (var inventory in contents.Values)
+            {
+                inventory.Clear();
+            }
         }
     }
 }

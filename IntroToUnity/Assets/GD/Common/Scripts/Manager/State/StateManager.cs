@@ -53,10 +53,12 @@ namespace GD.State
         [Tooltip("Set of optional conditions related to acheivements")]
         private List<ConditionBase> achievementConditions;
 
+
         /// <summary>
         /// Indicates whether the game has ended.
         /// </summary>
         private bool gameEnded = false;
+        public bool GameEnded => gameEnded;
 
         private ConditionContext conditionContext;
 
@@ -127,9 +129,11 @@ namespace GD.State
         /// <summary>
         /// Handles the logic when the player wins.
         /// </summary>
-        protected virtual void HandleWin()
+        public virtual void HandleWin()
         {
             Debug.Log($"Player Wins! Win condition met at {winCondition.TimeMet} seconds.");
+
+            UIManager.Instance.ShowWinPanel();
 
             // Implement win logic here, such as:
             // - Displaying a victory screen

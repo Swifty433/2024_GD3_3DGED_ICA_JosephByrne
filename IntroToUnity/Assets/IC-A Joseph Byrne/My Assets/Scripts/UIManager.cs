@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // Singleton instance
+    public static UIManager Instance { get; private set; }
+
     [SerializeField]
     [Tooltip("The UI panel used to display item facts")]
     private GameObject itemFactPanel;
@@ -29,17 +32,48 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        // Check if there's already an instance of UIManager
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);  // Destroy the duplicate UIManager
+        }
+        else
+        {
+            Instance = this;
+            // Create a new root GameObject and attach the UIManager to it
+            GameObject rootObject = new GameObject("UIManagerRoot");
+            transform.SetParent(rootObject.transform);  // Set UIManager as a child of the root GameObject
+            DontDestroyOnLoad(rootObject);  // Apply DontDestroyOnLoad to the root object
+        }
+
         // Ensure the panel is starts hidden
         if (itemFactPanel != null)
             itemFactPanel.SetActive(false);
 
         if (closeButton != null)
             closeButton.onClick.AddListener(HideItemFact);
+
+        if (winPanel != null)
+            winPanel.SetActive(false);
     }
 
     public void ShowWinPanel()
     {
-        winPanel.SetActive(true);
+        if (winPanel != null)
+            winPanel.SetActive(true);
+    }
+
+    public void HideVictoryScreen()
+    { 
+        if(winPanel != null)
+        {
+            winPanel.SetActive(false);
+        }
+    }
+
+    public void RestartLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
     public void ShowLosePanel()
