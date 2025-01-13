@@ -26,6 +26,9 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
+        float savedVolume = GetMusicVolume();
+        musicSource.volume = savedVolume;
+
         PlayMusic("Theme");
     }
 
@@ -59,5 +62,17 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.Save();
+    }
+
+    public float GetMusicVolume()
+    {
+        return PlayerPrefs.GetFloat("MusicVolume", 1f); 
     }
 }

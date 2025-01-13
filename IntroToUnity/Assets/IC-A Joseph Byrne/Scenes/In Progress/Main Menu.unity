@@ -2189,6 +2189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500281380}
   - component: {fileID: 1500281381}
+  - component: {fileID: 1500281382}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -2269,6 +2270,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1500281382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500281379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ef914baca030c49bd7af4ff42c093d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1500281381}
 --- !u!1 &1563342273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,10 +2725,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 47f45ef7b5767674393cc401fc325705, type: 3}
+    clip: {fileID: 8300000, guid: 3b686db1cb7094e4d8e35e27d57ec551, type: 3}
   sfxSounds:
   - name: Collect
-    clip: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
+    clip: {fileID: 8300000, guid: baac3569242f9c248a9a70bee52c1adc, type: 3}
   musicSource: {fileID: 72993936}
   sfxSource: {fileID: 24246490}
 --- !u!4 &2013205004
