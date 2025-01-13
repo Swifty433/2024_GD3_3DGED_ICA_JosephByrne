@@ -30,6 +30,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
 
+    [SerializeField]
+    [Tooltip("The tutorial panel displayed at game start")]
+    private GameObject tutorialPanel;
+
+    [SerializeField]
+    [Tooltip("The button to close tutorial panel")]
+    private Button closeTutorialButton;
+
     private void Awake()
     {
         // Check if there's already an instance of UIManager
@@ -55,6 +63,16 @@ public class UIManager : MonoBehaviour
 
         if (winPanel != null)
             winPanel.SetActive(false);
+
+        if (closeButton != null)
+            closeButton.onClick.AddListener(HideItemFact);
+
+        if(tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+            if(closeTutorialButton != null)
+                closeTutorialButton.onClick.AddListener(HideTutorialPanel);
+        }
     }
 
     public void ShowWinPanel()
@@ -125,4 +143,13 @@ public class UIManager : MonoBehaviour
     //{
         
     //}
+
+    ///<summary>
+    /// Hides the tutorial Panel
+    /// </summary>
+    private void HideTutorialPanel()
+    {
+        if(tutorialPanel != null)
+            tutorialPanel.SetActive(false);
+    }
 }
