@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The Button to stop displaying on screen text")]
     private Button closeButton;
 
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject losePanel;
+
     private void Awake()
     {
         // Ensure the panel is starts hidden
@@ -32,6 +35,16 @@ public class UIManager : MonoBehaviour
 
         if (closeButton != null)
             closeButton.onClick.AddListener(HideItemFact);
+    }
+
+    public void ShowWinPanel()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void ShowLosePanel()
+    {
+        losePanel.SetActive(true);
     }
 
     /// <summary>
