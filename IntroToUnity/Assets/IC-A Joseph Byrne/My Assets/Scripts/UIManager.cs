@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -27,8 +28,12 @@ public class UIManager : MonoBehaviour
     [Tooltip("The Button to stop displaying on screen text")]
     private Button closeButton;
 
-    [SerializeField] private GameObject winPanel;
-    [SerializeField] private GameObject losePanel;
+    [SerializeField]
+    [Tooltip("The panel displayed when the player wins.")]
+    private GameObject winPanel;
+
+    [SerializeField] 
+    private GameObject losePanel;
 
     [SerializeField]
     [Tooltip("The tutorial panel displayed at game start")]
@@ -75,11 +80,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowWinPanel()
-    {
-        if (winPanel != null)
-            winPanel.SetActive(true);
-    }
+    //public void ShowWinPanel()
+    //{
+    //    if (winPanel != null)
+    //        winPanel.SetActive(true);
+    //}
 
     public void HideVictoryScreen()
     { 
@@ -91,6 +96,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        ResetUIState();
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
@@ -151,5 +157,25 @@ public class UIManager : MonoBehaviour
     {
         if(tutorialPanel != null)
             tutorialPanel.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quiting game now");
+        Application.Quit();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        Debug.Log("Returning to main menu...");
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    private void ResetUIState()
+    {
+        if(tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+        }
     }
 }

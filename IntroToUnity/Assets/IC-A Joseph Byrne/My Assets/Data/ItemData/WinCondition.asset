@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd8507558fbfb946a217eecffdec362, type: 3}
+  m_Name: WinCondition
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  evaluateStrategy: 1
+  priorityLevel: 5
+  OnConditionMet: {fileID: 0}
+  isMet: 0
+  timeMet: -1
+  spawnArea:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  resourceInventory: {fileID: 11400000, guid: 1ba305d238bdbc049a7c0b2d65ac8605, type: 2}
+  items:
+  - {fileID: 11400000, guid: b642fd65a2ad2a8459a506f3bf9080ba, type: 2}

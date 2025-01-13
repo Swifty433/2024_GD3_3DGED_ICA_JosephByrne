@@ -3,6 +3,7 @@ using GD.Tick;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace GD.State
 {
@@ -52,6 +53,10 @@ namespace GD.State
         [SerializeField]
         [Tooltip("Set of optional conditions related to acheivements")]
         private List<ConditionBase> achievementConditions;
+
+        [SerializeField]
+        [Tooltip("The panel displayed when the player wins.")]
+        private GameObject winPanel;
 
 
         /// <summary>
@@ -133,7 +138,17 @@ namespace GD.State
         {
             Debug.Log($"Player Wins! Win condition met at {winCondition.TimeMet} seconds.");
 
-            UIManager.Instance.ShowWinPanel();
+            if (winPanel != null)
+            {
+                winPanel.SetActive(true); // Activate the win panel
+            }
+            else
+            {
+                Debug.LogWarning("WinPanel is not assigned in the StateManager!");
+            }
+
+            // Optionally, disable other gameplay elements or pause the game
+            //Time.timeScale = 0; // Pause the game
 
             // Implement win logic here, such as:
             // - Displaying a victory screen
